@@ -1,0 +1,21 @@
+@model Product
+@{
+    ViewData["Title"] = "Chi tiết sản phẩm";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3">Chi tiết sản phẩm</h2>
+    <div class="card" style="max-width: 500px;">
+        <img src="@Model.ImageUrl" class="card-img-top p-3" alt="@Model.Name"
+             onerror="this.src='https://placehold.co/400x250?text=No+Image'" />
+        <div class="card-body">
+            <h4 class="card-title">@Model.Name</h4>
+            <p><strong>Thể loại:</strong> @Model.Genre</p>
+            <p><strong>Nền tảng:</strong> @Model.Platform</p>
+            <p><strong>Giá:</strong> @(Model.Price == 0 ? "Miễn phí" : Model.Price.ToString("N0") + " đ")</p>
+            <p><strong>Ngày phát hành:</strong> @Model.CreatedAt.ToString("dd-MM-yyyy")</p>
+            <p><strong>Mô tả:</strong> @Model.Description</p>
+            <a asp-controller="Product" asp-action="Index" class="btn btn-secondary">Quay lại</a>
+        </div>
+    </div>
+</div>
